@@ -8,15 +8,29 @@
 
 #import "NextViewController.h"
 
+static int p_number;
+
 @interface NextViewController ()
 
 @end
 
-@implementation NextViewController
+@implementation NextViewController{
+    
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
+    [btn setTitle:@"NextViewController" forState:UIControlStateNormal];
+    [btn setFrame:CGRectMake(20.0, 140.0, self.view.frame.size.width - 20.0 - 20.0, 50.0)];
+    [btn setBackgroundColor:[UIColor orangeColor]];
+    [btn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchDown];
+    [self.view addSubview:btn];
     
 }
 
@@ -35,4 +49,15 @@
 }
 */
 
+- (void) btnClicked: (id) sender{
+    self.block(++p_number);
+    if (!(p_number%3)) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    
+}
+
 @end
+
+
+
